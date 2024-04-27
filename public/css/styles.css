@@ -1,6 +1,157 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 /******* Change Box Model ***************/
 *,
 *:before,
 *:after {
   box-sizing: border-box;
 }
+
+/**********header**********/
+
+#top-header {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.siteName a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+#tools a {
+  text-decoration: none;
+  color: #555;
+  font-size: 1.2rem;
+}
+
+/**********navigation**********/
+
+nav {
+  display: flex;
+  justify-content: center;
+}
+
+nav ul {
+  list-style-type: none;
+  background-color: #333;
+  display: flex;
+}
+
+nav li {
+  font-family:"Montserrat";
+  text-align: center;
+  padding: 15px 50px;
+  margin: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+nav li:hover {
+  background-color: #555;
+}
+
+/**********Home (index.ejs) **********/
+
+body{
+  background-color: #fff;
+  border: 10px solid lightblue; 
+  border-radius: 5%;
+  padding: 20px;
+  max-width: 900px;
+  margin: 2% auto;
+}
+
+.hero-image {
+  text-align: center; 
+}
+
+.hero-image img {
+  display: block; 
+  margin: 0 auto; 
+}
+
+/********** Banner **********/
+.banner h2 {
+  margin: 0;
+}
+
+.banner {
+  position: absolute;
+  top: 32%;
+  left: 32%;
+  background-color: rgba(243, 244, 245, 0.902); 
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px 20px;
+  width: 200px;
+  color: rgba(7, 156, 161, 0.87);
+  font-size: 1.2rem;
+}
+
+.banner-but {
+  background-color: rgba(7, 156, 161, 0.87); 
+  color: white; 
+  padding: 10px 20px; 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer; 
+  font-size: 16px; 
+}
+
+.banner-but:hover {
+  background-color: #0056b3; 
+}
+/**********Dolerean Upgrades **********/
+.content {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  margin-bottom: 50px;
+}
+.h2title {
+  margin: 50px;
+}
+.upgrades{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.upgrade-box{
+  border: 2px solid lightblue;
+  background-color: lightblue;
+  margin: 10px;
+  width: 150px;
+  height: 150px; /* Increase the height to accommodate the link beneath the image */
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center; /* Center the content inside the box */
+}
+
+.upgrade-box img{
+ display: block;
+ margin: 5px auto;
+}
+
+.upgrade-box a {
+  text-decoration: none;
+  color: blue;
+  padding: 5px;
+}
+
+.reviews{
+  grid-column: 2;
+}
+
+.reviews li {
+  margin-bottom: 30px;
+}
+
+.reviews ul li {
+  font-size: 1.5rem;
+}
+
