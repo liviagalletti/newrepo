@@ -24,11 +24,11 @@
   font-size: 2rem;
 }
 
-#tools a {
+nav a {
   text-decoration: none;
-  color: #555;
-  font-size: 1.2rem;
+  color: #fff; /* Adjust link color */
 }
+
 
 /**********navigation**********/
 
@@ -64,7 +64,7 @@ body{
   border: 10px solid lightblue; 
   border-radius: 5%;
   padding: 20px;
-  max-width: 900px;
+  max-width: 1050px;
   margin: 2% auto;
 }
 
@@ -154,6 +154,48 @@ body{
 .reviews ul li {
   font-size: 1.5rem;
 }
+
+
+/* Classification Grid styles */
+#inv-display {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px; /* Adjust spacing between grid items */
+}
+
+#inv-display li {
+  display: flex;
+  flex-direction: column;
+}
+
+#inv-display li img {
+  width: 100%; /* Make sure images fill their container */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.namePrice {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.namePrice h2 {
+  font-size: 1.2rem;
+  margin: 5px 0;
+}
+
+.namePrice span {
+  font-size: 1rem;
+  color: #555; /* Adjust price color */
+}
+
+.notice {
+  text-align: center;
+  color: #888; /* Adjust notice text color */
+}
+
 
 @media only screen and (max-width: 768px) {
   body {
