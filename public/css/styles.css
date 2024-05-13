@@ -109,18 +109,22 @@ body{
 }
 /**********Dolerean Upgrades **********/
 .content {
-  display: grid;
-  grid-template-columns: 1fr 400px;
-  margin-bottom: 50px;
+  display: flex;
+  justify-content: center; 
+  column-gap: 50px;
 }
+
+.upgrades{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  
+}
+
 .h2title {
   margin: 50px;
+  grid-column: span 2;
 }
-.upgrades{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+
 .upgrade-box{
   border: 2px solid lightblue;
   background-color: lightblue;
@@ -157,6 +161,13 @@ body{
 
 
 /* Classification Grid styles */
+.vehicle-item {
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+}
+
 #inv-display {
   list-style: none;
   padding: 0;
@@ -172,8 +183,8 @@ body{
 }
 
 #inv-display li img {
-  width: 100%; /* Make sure images fill their container */
-  height: auto; /* Maintain aspect ratio */
+  width: 100%; 
+  height: auto;
 }
 
 .namePrice {
@@ -193,7 +204,7 @@ body{
 
 .notice {
   text-align: center;
-  color: #888; /* Adjust notice text color */
+  color: #888; 
 }
 
 
@@ -209,11 +220,14 @@ body{
   }
 
   .content {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
   }
 
-  .reviews {
-    grid-column: 1;
+  .upgrades{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .upgrade-box {

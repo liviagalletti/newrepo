@@ -33,7 +33,7 @@ Util.buildClassificationGrid = async function(data){
   if(data.length > 0){
     grid = '<ul id="inv-display">'
     data.forEach(vehicle => { 
-      grid += '<li>'
+      grid += '<li class="vehicle-item">'
       grid +=  '<a href="../../inv/detail/'+ vehicle.inv_id 
       + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model 
       + 'details"><img src="' + vehicle.inv_thumbnail 
@@ -59,7 +59,23 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
-
+/* **************************************
+ * Generate HTML for vehicle details
+ * ************************************ */
+Util.generateVehicleHTML = function (vehicle) {
+  const html = `
+      <div class="vehicle-details">
+          <h2>${vehicle.inv_make} ${vehicle.inv_model}</h2>
+          <img src="${vehicle.inv_image}" alt="${vehicle.inv_make} ${vehicle.inv_model}">
+          <p><strong>Year:</strong> ${vehicle.inv_year}</p>
+          <p><strong>Description:</strong> ${vehicle.inv_description}</p>
+          <p><strong>Price:</strong> $${new Intl.NumberFormat("en-US").format(vehicle.inv_price)}</p>
+          <p><strong>Miles:</strong> ${new Intl.NumberFormat("en-US").format(vehicle.inv_miles)}</p>
+          <p><strong>Color:</strong> ${vehicle.inv_color}</p>
+      </div>
+  `;
+  return html;
+};
 
 /* ****************************************
  * Middleware For Handling Errors
