@@ -63,7 +63,7 @@ Util.buildInventoryItemGrid = async function(dataItem) {
   if (dataItem) {
     grid = '<ul id="inv-display">';
     grid += '<li class="vehicle-item">';
-    grid += `<a href="../../inv/detail/${dataItem.inv_id}" title="View ${dataItem.inv_make} ${dataItem.inv_model} "><img src="${dataItem.inv_thumbnail}" alt="Image of ${dataItem.inv_make} ${dataItem.inv_model} on CSE Motors" /></a>`;
+    grid += `<a href="../../inv/detail/${dataItem.inv_id}" title="View ${dataItem.inv_make} ${dataItem.inv_model} "><img src="${dataItem.inv_image}" alt="Image of ${dataItem.inv_make} ${dataItem.inv_model} on CSE Motors" /></a>`;
     grid += '<div class="namePrice">';
     grid += '<hr />';
     grid += `<h2><a href="../../inv/detail/${dataItem.inv_id}" title="View ${dataItem.inv_make} ${dataItem.inv_model} details">${dataItem.inv_make} ${dataItem.inv_model}</a></h2>`;
