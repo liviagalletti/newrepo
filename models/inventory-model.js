@@ -1,4 +1,4 @@
-const pool = require("../database/")
+const pool = require("../database/");
 
 /* ***************************
  *  Get all classification data
@@ -25,22 +25,26 @@ async function getInventoryByClassificationId(classification_id) {
   }
 }
 
-/* ***************************
- *  Get Make, model,  year, price, mileage
- * ************************** */
 
- async function getVehicleById(vehicleId) {
+/* ***************************
+ *  Get a single inventory item by id
+* ************************** */
+
+async function getInventoryById(id) {
   try {
     const data = await pool.query(
-      `SELECT inv_make, inv_model, inv_price, inv_description, inv_color, inv_miles  
-      FROM public.inventory 
-      Where inv_id = $1 `,
-      [vehicleId]
-    )
-    return data.rows
+      `SELECT * FROM public.inventory WHERE inv_id = $1`,
+      [id]
+    );
+    return data.rows[0];
   } catch (error) {
-    console.error("getVehicleById error " + error)
+    console.error("getInventoryById error " + error);
   }
 }
 
-module.exports = { getClassifications, getInventoryByClassificationId, getVehicleById };
+module.exports = {
+  getClassifications,
+  getInventoryByClassificationId,
+  getInventoryById
+};
+// ...

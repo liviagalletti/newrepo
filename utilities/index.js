@@ -24,7 +24,6 @@ Util.getNav = async function (req, res, next) {
   return list
 }
 
-
 /* **************************************
 * Build the classification view HTML
 * ************************************ */
@@ -59,29 +58,38 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
-/* **************************************
- * Generate HTML for vehicle details
- * ************************************ */
-Util.generateVehicleHTML = function (vehicle) {
-  const html = `
-      <div class="vehicle-details">
-          <h2>${vehicle.inv_make} ${vehicle.inv_model}</h2>
-          <img src="${vehicle.inv_image}" alt="${vehicle.inv_make} ${vehicle.inv_model}">
-          <p><strong>Year:</strong> ${vehicle.inv_year}</p>
-          <p><strong>Description:</strong> ${vehicle.inv_description}</p>
-          <p><strong>Price:</strong> $${new Intl.NumberFormat("en-US").format(vehicle.inv_price)}</p>
-          <p><strong>Miles:</strong> ${new Intl.NumberFormat("en-US").format(vehicle.inv_miles)}</p>
-          <p><strong>Color:</strong> ${vehicle.inv_color}</p>
-      </div>
-  `;
-  return html;
-};
-
+Util.buildInventoryItemGrid = async function(dataItem) {
+  var grid;
+  if (dataItem) {
+    grid = '<ul id="inv-display">';
+    grid += '<li class="vehicle-item">';
+    grid += `<a href="../../inv/detail/${dataItem.inv_id}" title="View ${dataItem.inv_make} ${dataItem.inv_model} "><img src="${dataItem.inv_thumbnail}" alt="Image of ${dataItem.inv_make} ${dataItem.inv_model} on CSE Motors" /></a>`;
+    grid += '<div class="namePrice">';
+    grid += '<hr />';
+    grid += `<h2><a href="../../inv/detail/${dataItem.inv_id}" title="View ${dataItem.inv_make} ${dataItem.inv_model} details">${dataItem.inv_make} ${dataItem.inv_model}</a></h2>`;
+    grid += `<h3>$${dataItem.inv_price}</h3>`;
+    grid += '<h3>Color:</h4>';
+    grid += `<p>${dataItem.inv_color}</p>`;
+    grid += '<h3>Description:</h4>';
+    grid += `<p>${dataItem.inv_description}</p>`;
+    grid += '<h3>Year:</h4>';
+    grid += `<p>${dataItem.inv_year}</p>`;
+    grid += '<h3>Mileage:</h4>';
+    grid += `<p>${dataItem.inv_miles} miles</p>`;
+    grid += '</div>';
+    grid += '</li>';
+    grid += '</ul>';
+  } else {
+    grid = '<h2>No vehicles available for this classification.</h2>';
+  }
+  return grid;
+}
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
  * General Error Handling
  **************************************** */
+
 Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
 
 
