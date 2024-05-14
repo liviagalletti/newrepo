@@ -55,10 +55,9 @@ app.use(async (err, req, res, next) => {
  *************************/
 const port = process.env.PORT
 const host = process.env.HOST
-
 /* ***********************
  * Log statement to confirm server operation
  *************************/
-app.listen(port, () => {
+app.listen(port, host, () => {
   console.log(`app listening on ${host}:${port}`)
 })
