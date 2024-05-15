@@ -9,7 +9,6 @@ const express = require("express")
 const expressLayouts = require("express-ejs-layouts")
 const env = require("dotenv").config()
 const app = express()
-const portl = process.env.PORT || 5500;
 const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
@@ -25,6 +24,7 @@ const utilities = require("./utilities")
  * Routess
  *************************/
 app.use(static)
+
 //Index route
 //app.get("/", baseController.buildHome)
 app.get("/", utilities.handleErrors(baseController.buildHome))
@@ -59,6 +59,6 @@ const host = process.env.HOST
 /* ***********************
  * Log statement to confirm server operation
  *************************/
-app.listen(port, host, () => {
+app.listen(() => {
   console.log(`app listening on ${host}:${port}`)
 })
