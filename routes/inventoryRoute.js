@@ -8,4 +8,3 @@ router.get("/detail/:inventoryId", invCont.buildByInventoryId);
 
 
 module.exports = router;
-
