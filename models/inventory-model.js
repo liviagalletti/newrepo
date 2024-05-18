@@ -42,9 +42,21 @@ async function getInventoryById(id) {
   }
 }
 
+
+async function processAddClassification(classification_name){
+  try {
+    const sql = "INSERT INTO public.classification VALUES ($1) RETURNING *"
+    return await pool.query(sql, [classification_name])
+  } catch (error) {
+    return error.message
+  }
+}
+
+
 module.exports = {
   getClassifications,
   getInventoryByClassificationId,
-  getInventoryById
+  getInventoryById,
+  processAddClassification
 };
 // ...

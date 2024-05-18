@@ -400,3 +400,62 @@ footer {
 .notice li {
   margin-bottom: 0.5rem;
 }
+
+/* Add Classification form */
+
+#addClassificationTitle {
+  text-align: center;
+}
+
+#addClassificationContainer {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f2f2f2;
+}
+
+#addClassificationForm {
+  margin-bottom: 20px;
+  
+}
+
+#addClassificationForm label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#addClassificationForm input[type="text"]{
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+#addClassificationForm button[type="submit"] {
+  display: block;
+  margin: 1rem auto;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#addClassificationForm button[type="submit"]:hover {
+  background-color: #0062cc;
+}
+
+#addClassificationForm span {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin: 10px 10px;
+}
+
+#addClassificationForm a:hover {
+  text-decoration: underline;
+}
+
+

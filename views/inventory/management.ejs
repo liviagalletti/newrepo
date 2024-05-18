@@ -1,0 +1,13 @@
+<h1 id="ManagementTitle"><%= title %></h1>
+
+<% if (messages) { %>
+  <%- messages() %>
+<% } %>
+
+<p>Welcome to the Inventory Management page! From here, you can add new classifications and inventory items to your database.</p>
+
+<div id="inventoryManagementLinks">
+    <a href="/inv/add-classification/">Add New Classification</a>
+    <br>
+    <a href="/inv/add-inventory/">Add New Inventory Item</a>
+</div>

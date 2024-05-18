@@ -18,6 +18,7 @@ const pool = require('./database/')
 const bodyParser = require("body-parser")
 
 
+
 /* ***********************
  * Middleware
  * ************************/
@@ -57,11 +58,14 @@ app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-
 app.use(static)
 
 //Index route
-//app.get("/", baseController.buildHome)
 app.get("/", utilities.handleErrors(baseController.buildHome))
-app.use("/inv", inventoryRoute)
+app.use("/inv", utilities.handleErrors(inventoryRoute))
+// Account routes
 app.use("/account", require("./routes/accountRoute"))
 app.use("/register", require("./routes/accountRoute"))
+// Add Classification/ Add vehicle routes
+app.use("/add-classification", require("./routes/inventoryRoute"));
+app.use("/add-inventory", require("./routes/inventoryRoute"));
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {

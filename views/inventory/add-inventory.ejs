@@ -1,0 +1,46 @@
+<h1 id="addInventoryTitle"><%= title %></h1>    
+
+<!-- AddVehicleForm.ejs -->
+
+
+<div id="addInventoryContainer">
+
+    <form action="/add-inventory" id="addInventoryForm" method="post"></form>
+        <label for="classification">Classification:</label>
+        <br>
+        <select id="classification" name="classification" required>
+            <option value="">Select Classification</option>
+            <!-- You need to dynamically populate this dropdown with classification options -->
+            <!-- For example, you can fetch classifications from the database and loop through them to create options -->
+        </select>
+        <br>
+        <label for="make">Make:</label>
+        <input type="text" id="make" name="inv_make" required>
+        <br>
+        <label for="model">Model:</label>
+        <input type="text" id="model" name="inv_model" required>
+        <br>
+        <label for="year">Year:</label>
+        <input type="number" id="year" name="inv_year" required>
+        <br>
+        <label for="description">Description:</label>
+        <textarea id="description" name="inv_description" required></textarea>
+        <br>
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="inv_image" accept="image/*" required>
+        <br>
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="inv_price" required>
+        <br>
+        <label for="miles">Miles:</label>
+        <input type="number" id="miles" name="inv_miles" required>
+        <br>
+        <label for="color">Color:</label>
+        <input type="text" id="color" name="inv_color" required>
+        <br>
+
+        <button type="submit">Add Vehicle</button>
+
+    </form>
+
+</div>

@@ -38,4 +38,70 @@ invCont.buildByInventoryId = async function (req, res, next) {
   });
 };
 
+
+ /* ****************************************
+*  Deliver add management view
+* *************************************** */
+invCont.buildManagementView = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("inventory/management", {
+    title: "Vehicle Management",
+    nav,
+    errors: null,
+  })
+}
+
+/* ****************************************
+*  Deliver add-classification view
+* ***************************************/
+invCont.addClassificationView = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("inventory/add-classification", {
+    title: "Add New Classification",
+    nav,
+  })
+}
+
+/* ****************************************
+*  Deliver add-inventory view
+* ***************************************/
+invCont.addInventoryView = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("inventory/add-inventory", {
+    title: "Add New Vehicle",
+    nav,
+  })
+}
+
+/* ****************************************
+*  Process Add Classification 
+* *************************************** */
+invCont.processAddClassification = async function (req, res) {
+  let nav = await utilities.getNav()
+  const { classification_name } = req.body
+
+  const regResult = await invModel.processAddClassification(
+    classification_name
+  )
+
+  if (regResult) {
+    req.flash(
+      "notice",
+      `Congratulations, you\'re registered ${classification_name}.`
+    )
+    res.status(201).render("inventory/add-classification", {
+      title: "Login",
+      nav,
+    })
+  } else {
+    req.flash("notice", "Sorry, the registration failed.")
+    res.status(501).render("inventory/add-classification", {
+      title: "Registration",
+      nav,
+    })
+  }
+}
+
+
 module.exports = invCont;
+
