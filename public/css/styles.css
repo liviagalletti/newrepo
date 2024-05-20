@@ -64,7 +64,7 @@ body{
   border: 10px solid lightblue; 
   border-radius: 5%;
   padding: 20px;
-  max-width: 1050px;
+  width: fit-content;
   margin: 2% auto;
 }
 
@@ -403,11 +403,11 @@ footer {
 
 /* Add Classification form */
 
-#addClassificationTitle {
+#addTitle {
   text-align: center;
 }
 
-#addClassificationContainer {
+#addContainer {
   width: 300px;
   margin: 0 auto;
   padding: 20px;
@@ -415,23 +415,23 @@ footer {
   background-color: #f2f2f2;
 }
 
-#addClassificationForm {
+#addForm {
   margin-bottom: 20px;
   
 }
 
-#addClassificationForm label {
+#addForm label {
   display: block;
   margin-bottom: 5px;
 }
 
-#addClassificationForm input[type="text"]{
+#addForm input[type="text"]{
   width: 100%;
   padding: 5px;
   margin-bottom: 10px;
 }
 
-#addClassificationForm button[type="submit"] {
+#addForm button[type="submit"] {
   display: block;
   margin: 1rem auto;
   background-color: #007bff;
@@ -443,18 +443,18 @@ footer {
   transition: background-color 0.3s ease;
 }
 
-#addClassificationForm button[type="submit"]:hover {
+#addForm button[type="submit"]:hover {
   background-color: #0062cc;
 }
 
-#addClassificationForm span {
+#addForm span {
   display: block;
   font-size: 14px;
   color: #666;
   margin: 10px 10px;
 }
 
-#addClassificationForm a:hover {
+#addForm a:hover {
   text-decoration: underline;
 }
 

@@ -6,7 +6,6 @@ const pool = require("../database/");
 async function getClassifications(){
   return await pool.query("SELECT * FROM public.classification ORDER BY classification_name")
 }
-
 /* ***************************
  *  Get all inventory items and classification_name by classification_id
  * ************************** */
@@ -24,12 +23,9 @@ async function getInventoryByClassificationId(classification_id) {
     console.error("getclassificationsbyid error " + error)
   }
 }
-
-
 /* ***************************
  *  Get a single inventory item by id
 * ************************** */
-
 async function getInventoryById(id) {
   try {
     const data = await pool.query(
@@ -41,22 +37,37 @@ async function getInventoryById(id) {
     console.error("getInventoryById error " + error);
   }
 }
-
-
-async function processAddClassification(classification_name){
+/* ***************************
+ *  Add new inventory Car
+* ************************** */
+async function addInventory(inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id) {
   try {
-    const sql = "INSERT INTO public.classification VALUES ($1) RETURNING *"
-    return await pool.query(sql, [classification_name])
+      const sql = "INSERT INTO public.inventory (inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *"
+      const data = await pool.query(sql, [inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id])
+      return data.rows; // Assuming you want to return the inserted data
   } catch (error) {
-    return error.message
+      console.error("addInventory error " + error)
   }
 }
-
+/* ***************************
+ *  Add new classification Name
+* ************************** */
+async function addClassification(classification_name) {
+  try {
+    const sql = "INSERT INTO public.classification (classification_name) VALUES ($1) RETURNING *"
+    const data = await pool.query(sql, [classification_name])
+    return data.rows
+  }
+  catch (error) {
+    console.error("addClassification error " + error)
+  }
+}
 
 module.exports = {
   getClassifications,
   getInventoryByClassificationId,
   getInventoryById,
-  processAddClassification
+  addClassification,
+  addInventory
 };
 // ...

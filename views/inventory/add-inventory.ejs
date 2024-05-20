@@ -1,43 +1,41 @@
-<h1 id="addInventoryTitle"><%= title %></h1>    
+<h1 id="addTitle"><%= title %></h1>    
 
 <!-- AddVehicleForm.ejs -->
 
 
-<div id="addInventoryContainer">
+<div id="addContainer">
 
-    <form action="/add-inventory" id="addInventoryForm" method="post"></form>
-        <label for="classification">Classification:</label>
-        <br>
-        <select id="classification" name="classification" required>
-            <option value="">Select Classification</option>
-            <!-- You need to dynamically populate this dropdown with classification options -->
-            <!-- For example, you can fetch classifications from the database and loop through them to create options -->
-        </select>
-        <br>
-        <label for="make">Make:</label>
-        <input type="text" id="make" name="inv_make" required>
-        <br>
-        <label for="model">Model:</label>
-        <input type="text" id="model" name="inv_model" required>
-        <br>
-        <label for="year">Year:</label>
-        <input type="number" id="year" name="inv_year" required>
-        <br>
-        <label for="description">Description:</label>
-        <textarea id="description" name="inv_description" required></textarea>
-        <br>
-        <label for="image">Image:</label>
-        <input type="file" id="image" name="inv_image" accept="image/*" required>
-        <br>
-        <label for="price">Price:</label>
-        <input type="number" id="price" name="inv_price" required>
-        <br>
-        <label for="miles">Miles:</label>
-        <input type="number" id="miles" name="inv_miles" required>
-        <br>
-        <label for="color">Color:</label>
-        <input type="text" id="color" name="inv_color" required>
-        <br>
+    <form action="/inv/add-inventory" id="addForm" method="post">
+
+        <label for="classification_id">Classification:</label>
+        <%- classificationList %>
+   
+        <label for="inv_make">Make:</label>
+        <input type="text" placeholder="Min of 3 characters" id="inv_make" name="inv_make" pattern="[A-Za-z]+" required>
+
+        <label for="inv_model">Model:</label>
+        <input type="text" placeholder="Min of 3 characters" id="inv_model" name="inv_model" pattern="[A-Za-z]+" required>
+
+        <label for="inv_year">Year:</label>
+        <input type="number" placeholder="4-digit year"  id="inv_year" name="inv_year" min="1886" max="2099" required>
+
+        <label for="inv_description">Description:</label>
+        <textarea id="inv_description" rows="10" cols="32" name="inv_description" required></textarea>
+
+        <label for="inv_image">Image:</label>
+        <input type="text" id="inv_image" name="inv_image" value="/path/to/no-image-available.jpg" readonly>
+
+        <label for="inv_thumbnail">Thumbnail:</label>
+        <input type="text" id="inv_thumbnail" name="inv_thumbnail" value="/path/to/no-image-available.jpg" readonly>
+
+        <label for="inv_price">Price:</label>
+        <input type="number" placeholder="Decimal or integer" id="inv_price" name="inv_price" min="0" required>
+
+        <label for="inv_miles">Miles:</label>
+        <input type="number" placeholder="digits only"  id="inv_miles" name="inv_miles" min="0" required>
+
+        <label for="inv_color">Color:</label>
+        <input type="text" id="inv_color" name="inv_color" pattern="[A-Za-z]+" required>
 
         <button type="submit">Add Vehicle</button>
 
