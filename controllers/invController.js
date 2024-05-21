@@ -59,7 +59,7 @@ invCont.buildAddClassification = async function (req, res, next) {
   let nav = await utilities.getNav()
 
   res.render("./inventory/add-classification", {
-      title: "addClassification",
+      title: "Add new Classification",
       nav,
       errors: null,
    })
@@ -81,7 +81,7 @@ invCont.addClassification = async function (req, res) {
   } else {
     req.flash("notice", "Sorry, the classification was not added.")
     res.status(501).render("./inventory/add-classification", {
-      title: "addClassification",
+      title: "Add new Classification",
       nav,
       errors: null,
     })
@@ -99,7 +99,7 @@ invCont.buildAddInventory = async function (req, res, next) {
 
   req.flash("notice", "This is a message.")
   res.render("./inventory/add-inventory", {
-      title: "addInventory",
+      title: "Add new Inventory",
       nav,
       classificationList,
    })
