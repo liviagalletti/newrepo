@@ -91,5 +91,23 @@ validate.loginRules = () => {
       .withMessage("Password is required."),
     ]
   }
-  
-  module.exports = validate
+
+validate.checkLoginData = async (req, res, next) => {
+  const { account_email, account_password } = req.body
+  let errors = []
+  errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    res.render("account/management", {
+      errors,
+      title: "Login",
+      nav,
+      account_email,
+      account_password,
+    })
+    return
+  }
+  next()
+}
+
+module.exports = validate

@@ -14,6 +14,7 @@ router.get("/", invCont.buildManagementView);
 // Route to build add-classification view / post data 
 router.get("/add-classification", invCont.buildAddClassification);
 router.get("/add-inventory", invCont.buildAddInventory);
+router.get("/getInventory/:classification_id", utilities.handleErrors(invCont.getInventoryJSON))
 
 router.post(
     '/add-inventory',
