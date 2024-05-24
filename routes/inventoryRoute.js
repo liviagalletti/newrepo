@@ -14,7 +14,11 @@ router.get("/", invCont.buildManagementView);
 // Route to build add-classification view / post data 
 router.get("/add-classification", invCont.buildAddClassification);
 router.get("/add-inventory", invCont.buildAddInventory);
+
 router.get("/getInventory/:classification_id", utilities.handleErrors(invCont.getInventoryJSON))
+// Route to build update data view  
+router.get("/edit/:inv_id", utilities.handleErrors(invCont.editInventoryView))
+
 
 router.post(
     '/add-inventory',
@@ -29,4 +33,6 @@ router.post(
     validate.checkData,
     utilities.handleErrors(invCont.addClassification)
 );
+
+
 module.exports = router;
