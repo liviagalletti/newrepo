@@ -18,6 +18,13 @@ router.get("/add-inventory", invCont.buildAddInventory);
 router.get("/getInventory/:classification_id", utilities.handleErrors(invCont.getInventoryJSON))
 // Route to build update data view  
 router.get("/edit/:inv_id", utilities.handleErrors(invCont.editInventoryView))
+// Route to build delete data view
+router.get("/delete/:inv_id", utilities.handleErrors(invCont.deleteInventoryView))
+
+router.post(
+    "/deleteConfirm",
+    utilities.handleErrors(invCont.deleteInventory)
+)
 
 router.post(
     "/update/", 
