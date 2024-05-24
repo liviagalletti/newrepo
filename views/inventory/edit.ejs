@@ -5,7 +5,7 @@
 
 <div id="addContainer">
 
-    <form action="/inv/update" id="addForm" method="post">
+    <form action="/inv/update" class="addForm" id="updateForm" method="post">
 
         <label for="classification_id">Classification:</label>
         <%- classificationList %>
@@ -39,6 +39,13 @@
 
         <button type="submit">Update Vehicle</button>
 
+        <input type="hidden" name="inv_id"
+
+        <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+        <% } %>>
+
+        <script src="/js/inv-update.js"></script> 
+        
     </form>
 
 </div>

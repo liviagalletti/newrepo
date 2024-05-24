@@ -415,23 +415,23 @@ footer {
   background-color: #f2f2f2;
 }
 
-#addForm {
+.addForm  {
   margin-bottom: 20px;
   
 }
 
-#addForm label {
+.addForm label {
   display: block;
   margin-bottom: 5px;
 }
 
-#addForm input[type="text"]{
+.addForm  input[type="text"]{
   width: 100%;
   padding: 5px;
   margin-bottom: 10px;
 }
 
-#addForm button[type="submit"] {
+.addForm  button[type="submit"] {
   display: block;
   margin: 1rem auto;
   background-color: #007bff;
@@ -443,18 +443,18 @@ footer {
   transition: background-color 0.3s ease;
 }
 
-#addForm button[type="submit"]:hover {
+.addForm button[type="submit"]:hover {
   background-color: #0062cc;
 }
 
-#addForm span {
+.addForm  span {
   display: block;
   font-size: 14px;
   color: #666;
   margin: 10px 10px;
 }
 
-#addForm a:hover {
+.addForm a:hover {
   text-decoration: underline;
 }
 

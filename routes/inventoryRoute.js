@@ -19,6 +19,12 @@ router.get("/getInventory/:classification_id", utilities.handleErrors(invCont.ge
 // Route to build update data view  
 router.get("/edit/:inv_id", utilities.handleErrors(invCont.editInventoryView))
 
+router.post(
+    "/update/", 
+    validate.newInventoryRules(),
+    validate.checkUpdateData,
+    utilities.handleErrors(invCont.updateInventory)
+);
 
 router.post(
     '/add-inventory',
