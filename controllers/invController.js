@@ -269,28 +269,16 @@ invCont.deleteInventoryView = async function (req, res, next) {
  * ************************** */
 invCont.deleteInventory = async function (req, res, next) {
   let nav = await utilities.getNav()
-  const {
-    inv_make,
-    inv_model,
-    inv_price,
-    inv_year,
-    inv_id
-  } = req.body
-  const deleteResult = await invModel.deleteInventoryItem( 
-    inv_make,
-    inv_model,
-    inv_price,
-    inv_year,
-    inv_id
-  )
+  const {inv_id} = req.body
+  const updateResult = await invModel.getInventoryById(inv_id)
+  const deleteResult = await invModel.deleteInventoryItem(inv_id)
+  const itemName = `${updateResult.inv_make} ${updateResult.inv_model}`
 
   if (deleteResult) {
-    const itemName = updateResult.inv_make + " " + updateResult.inv_model
     req.flash("notice", `The ${itemName} was successfully deleted.`)
     res.redirect("/inv/")
   } else {
     const classificationList = await utilities.buildClassificationList(inv_id)
-    const itemName = `${inv_make} ${inv_model}`
     req.flash("notice", "Sorry, the delete failed.")
     res.status(501).render("inventory/delete", {
     title: "Delete " + itemName,
