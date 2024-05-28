@@ -2,3 +2,12 @@
 <%- messages() %>
 
 <p>You're logged in</p>
+
+<div id="account-management">
+    <h2> <%= greeting %> </h2> <!-- Saudação -->
+    
+    <!-- Seção de gerenciamento de inventário -->
+    <p><a href= <%= inventoryManagementSection %> >Access Inventory Management</a></p>
+    <!-- Link para atualizar informações da conta -->
+    <p><a href="/account/update">Update Account Information</a></p>
+</div>

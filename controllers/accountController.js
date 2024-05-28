@@ -111,11 +111,25 @@ async function accountLogin(req, res) {
 * *************************************** */
 async function accountManagement(req, res, next) {
   let nav = await utilities.getNav();
+  const { accountData } = res.locals; // Obter dados da conta do middleware checkJWTToken
+  const { account_type, account_firstname } = accountData;
+
+  let greeting = `Welcome ${account_firstname}`;
+
+  let inventoryManagementSection = ''; // Inicialmente vazio
+  
+  if (account_type === 'Employee' || account_type === 'Admin') {
+    // Adicionar link para a visualização de gerenciamento de inventário
+    inventoryManagementSection = `"/inventory/management"`;
+  }
+
   res.render("account/management", {
     title: "Account Management",
     nav,
     message: req.flash("success"),
     errors: req.flash("error"),
+    greeting, // Passar a saudação para a visualização
+    inventoryManagementSection, // Passar a seção de gerenciamento de inventário para a visualização
   });
 }
 
