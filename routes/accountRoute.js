@@ -10,9 +10,8 @@ router.get("/register", utilities.handleErrors(accountController.buildRegister))
 router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.accountManagement))
 router.post("/logout", utilities.handleErrors(accountController.accountLogout))
 // Atualização das rotas de contas
-router.get("/update", utilities.checkLogin, utilities.handleErrors(accountController.updateAccountView));
-router.post("/update", utilities.checkLogin, utilities.handleErrors(accountController.updateAccount));
-
+router.get("/update", utilities.checkLogin, utilities.handleErrors(accountController.buildUpdateAccount));
+router.post("/update", utilities.checkLogin, regValidate.updateAccountRules(), utilities.handleErrors(accountController.updateAccount));
 
 router.post(
   "/register",

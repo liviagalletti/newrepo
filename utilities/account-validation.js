@@ -110,4 +110,51 @@ validate.checkLoginData = async (req, res, next) => {
   next()
 }
 
+
+validate.updateAccountRules = () => {
+  return [
+    body("account_firstname")
+      .trim()
+      .notEmpty()
+      .withMessage("Please provide a first name.")
+      .isLength({ min: 1 })
+      .withMessage("First name must be at least 1 character long"),
+
+    body("account_lastname")
+      .trim()
+      .notEmpty()
+      .withMessage("Please provide a last name.")
+      .isLength({ min: 2 })
+      .withMessage("Last name must be at least 2 characters long"),
+
+    body("account_email")
+      .trim()
+      .notEmpty()
+      .withMessage("Please provide an email address.")
+      .isEmail()
+      .withMessage("Please provide a valid email address."),
+
+  ];
+};
+
+
+validate.changePasswordRules = () => {
+  return [
+    body("new_password")
+      .trim()
+      .notEmpty()
+      .isStrongPassword({
+        minLength: 12,
+        minLowercase: 1,
+        minUppercase: 1,
+        minNumbers: 1,
+        minSymbols: 1,
+      })
+      .withMessage("Password does not meet requirements."),
+  ];
+};
+
+
+
+
 module.exports = validate
