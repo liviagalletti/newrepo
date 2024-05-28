@@ -119,7 +119,16 @@ async function accountManagement(req, res, next) {
   });
 }
 
+/* ****************************************
+ *  Process logout request
+ * ************************************ */
+async function accountLogout(req, res) {
+  res.clearCookie("jwt");
+  req.flash("notice", "You have been logged out.");
+  res.redirect("/");
+}
 
-  module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, accountManagement}
+
+  module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, accountManagement, accountLogout}
 
   
