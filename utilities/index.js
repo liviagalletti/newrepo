@@ -140,6 +140,36 @@ Util.checkJWTToken = (req, res, next) => {
     return res.redirect("/account/login")
   }
 }
+
+/* ****************************************
+ * Middleware to check JWT token and account type
+ **************************************** */
+Util.checkAccountType = (allowedTypes) => {
+  return (req, res, next) => {
+    if (req.cookies.jwt) {
+      jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET, function (err, accountData) {
+        if (err) {
+          req.flash("notice", "Please log in.");
+          res.clearCookie("jwt");
+          return res.redirect("/account/login");
+        }
+        
+        if (allowedTypes.includes(accountData.account_type)) {
+          res.locals.accountData = accountData;
+          res.locals.loggedin = true;
+          next();
+        } else {
+          req.flash("notice", "You do not have permission to access this resource.");
+          return res.redirect("/account/login");
+        }
+      });
+    } else {
+      req.flash("notice", "Please log in.");
+      return res.redirect("/account/login");
+    }
+  };
+};
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
