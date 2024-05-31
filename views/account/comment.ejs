@@ -5,9 +5,18 @@
 
 <div id="addContainer">
     <form action="/account/comment" class="addForm" method="POST">
-        <label for="comment">Your Comment:</label><br>
-        
-        <textarea id="comment" name="comment" rows="4" cols="32" placeholder="Looking for recommendations? Ask our community here!"></textarea><br>
-        <button type="submit">Send</button>
+      <label for="name_first">First Name:</label>
+      <input type="text" name="name_first" id="name_first" required>
+      
+      <label for="name_last">Last Name:</label>
+      <input type="text" name="name_last" id="name_last" required>
+
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" required>
+      
+      <label for="comment">Message:</label><br>
+      <textarea id="comment" name="comment" rows="4" cols="32" placeholder="Looking for recommendations? Ask our community here!"></textarea><br>
+      
+      <button type="submit">Send</button>
     </form>
-</div>    
+  </div>

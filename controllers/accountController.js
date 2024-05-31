@@ -227,7 +227,7 @@ async function updatePassword(req, res) {
 async function buildCommentForm(req, res) {
   let nav = await utilities.getNav();
   res.render("account/comment", {
-    title: "Add Comment",
+    title: "Contact Us",
     nav,
     errors: null,
   });
@@ -238,25 +238,26 @@ async function buildCommentForm(req, res) {
  * Comment process
  * ************************************ */
 
-async function processComment(req, res) {
-  const { comment } = req.body;
+async function processComment (req, res) {
+
+  const { name_first, name_last, email, comment } = req.body;
 
   try {
-    const result = await accountModel.addComment(comment);
+    const result = await accountModel.addComment(name_first, name_last, email, comment);
     
     if (result) {
-      req.flash("success", "Comment added successfully!");
+      req.flash("success", "Message added successfully. We will contact you as soon as possible.!");
       res.redirect("/account/comment");
     } else {
-      req.flash("error", "Failed to add comment.");
+      req.flash("error", "Failed to add message.");
       res.redirect("/account/comment");
     }
   } catch (error) {
     console.error("Error adding comment:", error);
-    req.flash("error", "An error occurred while adding comment.");
+    req.flash("error", "An error occurred while adding message.");
     res.redirect("/account/comment");
   }
-}
+};
 
 
   module.exports = { buildLogin, 

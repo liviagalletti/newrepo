@@ -237,3 +237,12 @@ UPDATE public.inventory
 SET 
     inv_image = REPLACE(inv_image, '/images', '/images/vehicles'), 
     inv_thumbnail = REPLACE(inv_thumbnail, '/images', '/images/vehicles');
+
+
+CREATE TABLE comments (
+    comment_id SERIAL PRIMARY KEY,
+    name_first VARCHAR(50) NOT NULL,
+    name_last VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    comment TEXT NOT NULL
+);

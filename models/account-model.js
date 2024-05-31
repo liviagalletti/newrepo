@@ -57,14 +57,15 @@ async function getAccountByEmail (account_email) {
   /* **********************
  *   Add a coment
  * ********************* */
-async function addComment(comment) {
-  try {
-    const sql = "INSERT INTO comments (comment) VALUES ($1) RETURNING *";
-    return await pool.query(sql, [comment]);
-  } catch (error) {
-    console.error("Error adding comment:", error);
-    return null;
+  async function addComment(name_first, name_last, email, comment) {
+    try {
+      const sql = "INSERT INTO comments (name_first, name_last, email, comment) VALUES ($1, $2, $3, $4) RETURNING *";
+      const result = await pool.query(sql, [name_first, name_last, email, comment]);
+      return result.rows[0];
+    } catch (error) {
+      console.error("Error adding comment:", error);
+      throw error;
+    }
   }
-}
 
 module.exports = { registerAccount, checkExistingEmail, getAccountByEmail, addComment  }
