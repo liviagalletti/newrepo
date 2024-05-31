@@ -27,4 +27,8 @@ router.post(
   utilities.handleErrors(accountController.accountLogin)
 )
 
+router.get("/comment", utilities.handleErrors(accountController.buildCommentForm));
+router.post("/comment", utilities.handleErrors(accountController.processComment));
+
+
 module.exports = router;

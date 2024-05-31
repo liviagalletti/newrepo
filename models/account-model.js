@@ -53,4 +53,18 @@ async function getAccountByEmail (account_email) {
   }
 }
 
-module.exports = { registerAccount, checkExistingEmail, getAccountByEmail }
+
+  /* **********************
+ *   Add a coment
+ * ********************* */
+async function addComment(user_id, post_id, content) {
+  try {
+    const sql = "INSERT INTO comments (user_id, post_id, content) VALUES ($1, $2, $3) RETURNING *";
+    return await pool.query(sql, [user_id, post_id, content]);
+  } catch (error) {
+    console.error("Error adding comment:", error);
+    return null; // Você pode querer retornar null ou lançar um erro aqui, dependendo do seu caso de uso
+  }
+}
+
+module.exports = { registerAccount, checkExistingEmail, getAccountByEmail, addComment  }

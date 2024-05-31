@@ -120,7 +120,7 @@ async function accountManagement(req, res, next) {
   
   if (account_type === 'Employee' || account_type === 'Admin') {
     // Adicionar link para a visualização de gerenciamento de inventário
-    inventoryManagementSection = `"/inventory/management"`;
+    inventoryManagementSection = `/inv/`;
   }
 
   res.render("account/management", {
@@ -221,7 +221,50 @@ async function updatePassword(req, res) {
   }
 }
 
+/* ****************************************
+ * Comment view
+ * ************************************ */
+async function buildCommentForm(req, res) {
+  let nav = await utilities.getNav();
+  res.render("account/comment", {
+    title: "Add Comment",
+    nav,
+    errors: null,
+  });
+}
 
-  module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, accountManagement, accountLogout, buildUpdateAccount,updateAccount,updatePassword}
+
+/* ****************************************
+ * Comment process
+ * ************************************ */
+
+async function processComment(req, res) {
+  const { comment } = req.body;
+  const { user_id, post_id } = req.user; // Supondo que você tenha informações do usuário na requisição
+
+  try {
+    const result = await accountModel.addComment(user_id, post_id, comment);
+    
+    if (result) {
+      req.flash("success", "Comment added successfully!");
+      res.redirect("/account");
+    } else {
+      req.flash("error", "Failed to add comment.");
+      res.redirect("/account/comment");
+    }
+  } catch (error) {
+    console.error("Error adding comment:", error);
+    req.flash("error", "An error occurred while adding comment.");
+    res.redirect("/account/comment");
+  }
+}
+
+
+  module.exports = { buildLogin, 
+  buildRegister, registerAccount, 
+  accountLogin, accountManagement, 
+  accountLogout, buildUpdateAccount,
+  updateAccount,updatePassword,
+  buildCommentForm, processComment}
 
   
