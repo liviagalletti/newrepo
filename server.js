@@ -41,6 +41,7 @@ app.use(function(req, res, next){
   next()
 })
 
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 app.use(cookieParser())
@@ -62,6 +63,7 @@ app.use(static)
 //Index route
 app.get("/", utilities.handleErrors(baseController.buildHome))
 app.use("/inv", utilities.handleErrors(inventoryRoute))
+app.use('/error', inventoryRoute);
 // Account routes
 app.use("/account", require("./routes/accountRoute"))
 app.use("/register", require("./routes/accountRoute"))

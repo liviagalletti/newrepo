@@ -106,6 +106,19 @@ Util.buildClassificationList = async function (classification_id = null) {
   classificationList += "</select>"
   return classificationList
 }
+/* ****************************************
+* Middleware Error
+**************************************** */
+
+Util.errorHandler = (err, req, res, next) => {
+  console.error(err.stack);
+  res.status(err.status || 500);
+  res.render('error', {
+    title: 'Error',
+    message: err.message,
+    error: err,
+  });
+};
 
 /* ****************************************
 * Middleware to check token validity

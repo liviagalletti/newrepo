@@ -38,6 +38,18 @@ invCont.buildByInventoryId = async function (req, res, next) {
 };
 
  /* ****************************************
+* Error
+* *************************************** */
+
+invCont.triggerError = async function (req, res, next){
+  // Gerando um erro intencional
+  const error = new Error("Erro intencional gerado!");
+  error.status = 500;
+  next(error);
+};
+
+
+ /* ****************************************
 *  Deliver add management view
 * *************************************** */
 invCont.buildManagementView = async function (req, res, next) {

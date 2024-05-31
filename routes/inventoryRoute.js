@@ -12,6 +12,9 @@ router.get("/detail/:inventoryId", invCont.buildByInventoryId);
 // Route to build management view
 router.get("/", invCont.buildManagementView);
 // Route to build add-classification view / post data 
+
+router.get('/error', invCont.triggerError);
+
 router.get('/add-classification', utilities.checkAccountType(['Employee', 'Admin']), utilities.handleErrors(invCont.buildAddClassification));
 router.get('/add-inventory', utilities.checkAccountType(['Employee', 'Admin']), utilities.handleErrors(invCont.buildAddInventory));
 
