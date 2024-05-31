@@ -57,13 +57,13 @@ async function getAccountByEmail (account_email) {
   /* **********************
  *   Add a coment
  * ********************* */
-async function addComment(user_id, post_id, content) {
+async function addComment(comment) {
   try {
-    const sql = "INSERT INTO comments (user_id, post_id, content) VALUES ($1, $2, $3) RETURNING *";
-    return await pool.query(sql, [user_id, post_id, content]);
+    const sql = "INSERT INTO comments (comment) VALUES ($1) RETURNING *";
+    return await pool.query(sql, [comment]);
   } catch (error) {
     console.error("Error adding comment:", error);
-    return null; // Você pode querer retornar null ou lançar um erro aqui, dependendo do seu caso de uso
+    return null;
   }
 }
 

@@ -240,14 +240,13 @@ async function buildCommentForm(req, res) {
 
 async function processComment(req, res) {
   const { comment } = req.body;
-  const { user_id, post_id } = req.user; // Supondo que você tenha informações do usuário na requisição
 
   try {
-    const result = await accountModel.addComment(user_id, post_id, comment);
+    const result = await accountModel.addComment(comment);
     
     if (result) {
       req.flash("success", "Comment added successfully!");
-      res.redirect("/account");
+      res.redirect("/account/comment");
     } else {
       req.flash("error", "Failed to add comment.");
       res.redirect("/account/comment");
