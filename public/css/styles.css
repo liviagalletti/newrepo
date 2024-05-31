@@ -276,6 +276,10 @@ footer {
   margin-top: 50px;
 }
 
+footer a {
+  color: #fff;
+}
+
 /*Login form*/
 
 #loginTitle {
