@@ -1,22 +1,6 @@
-# Project Overview
+# Backend (Node.js/Express.js/PostgreSQL)
+This project is a web application integrating database functionality, server-side logic, and client-side interaction. It utilizes Node.js as the server-side runtime environment and Express.js as the web application framework to handle server-side logic. PostgreSQL serves as the relational database for storing and managing data, while JWT (JSON Web Tokens) is employed for authentication and authorization. Frontend development is carried out using HTML, CSS, and JavaScript to create the user interface and implement interactive features. Additional technologies include Express-Validator for request data validation, dotenv for loading environment variables, pg (node-postgres) for interacting with PostgreSQL, Express-Flash for displaying user messages, Express-Session for managing sessions, Bcrypt for password hashing, ESLint for code quality checks, Prettier for code formatting, Morgan for HTTP request logging, and Nodemon for automatic server restarts upon file system changes. Together, these technologies enable the creation of a robust web application with capabilities such as user authentication, database interactions, form validation, and more.
 
-This is a web site that integrates database functionality, server-side logic, and client-side interaction. The project uses the following technologies:
+(Este projeto é uma aplicação web que integra funcionalidades de banco de dados, lógica no lado do servidor e interação no lado do cliente. Ele utiliza Node.js como ambiente de execução no lado do servidor e Express.js como framework de aplicação web para lidar com a lógica no lado do servidor. PostgreSQL atua como o banco de dados relacional para armazenamento e gerenciamento de dados, enquanto JWT (JSON Web Tokens) é utilizado para autenticação e autorização. O desenvolvimento do frontend é realizado utilizando HTML, CSS e JavaScript para criar a interface do usuário e implementar funcionalidades interativas. Outras tecnologias incluem Express-Validator para validação de dados de requisições, dotenv para carregar variáveis de ambiente, pg (node-postgres) para interação com PostgreSQL, Express-Flash para exibição de mensagens para o usuário, Express-Session para gerenciamento de sessões, Bcrypt para hash de senhas, ESLint para verificações de qualidade de código, Prettier para formatação de código, Morgan para registro de requisições HTTP, e Nodemon para reinícios automáticos do servidor ao detectar mudanças no sistema de arquivos. Juntas, essas tecnologias possibilitam a criação de uma aplicação web robusta com funcionalidades como autenticação de usuário, interações com banco de dados, validação de formulários e mais.)
 
-- **Node.js:** Used as the server-side runtime environment for JavaScript.
-- **Express.js:** A web application framework for Node.js used to build the server-side logic.
-- **PostgreSQL:** A powerful open-source relational database used for storing and managing data.
-- **JWT (JSON Web Tokens):** Used for authentication and authorization purposes.
-- **HTML/CSS/JavaScript:** Frontend technologies used for creating the user interface and interactivity.
-- **Express-Validator:** Middleware for validation of request data.
-- **dotenv:** Used for loading environment variables from a .env file into process.env.
-- **pg (node-postgres):** A PostgreSQL client for Node.js used for interacting with the PostgreSQL database.
-- **Express-Flash:** Used for flashing messages to the user.
-- **Express-Session:** Middleware for managing sessions in Express.js.
-- **Bcrypt:** Library for hashing passwords.
-- **ESLint:** A tool for identifying and reporting on patterns found in JavaScript code.
-- **Prettier:** An opinionated code formatter.
-- **Morgan:** HTTP request logger middleware for Node.js.
-- **Nodemon:** Utility that automatically restarts the server when changes are detected in the file system.
-
-These technologies collectively enable the development of a web application with features such as user authentication, database interactions, form validation, and more.
-[Node.js website](https://three40newrepo.onrender.com).
+## [Click here to see](https://three40newrepo.onrender.com).
